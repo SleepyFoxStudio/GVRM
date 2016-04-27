@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>GVRM by tridionted</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">GVRM</h1>
+        <p class="header">Git Version Release Manager, handles releasing of a folder from a Git Repo and packaging it in to a zip file, and creating a tag automatically</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/tridionted/GVRM/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/tridionted/GVRM/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/tridionted/GVRM">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/tridionted">tridionted</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="how-git-version-release-manager" class="anchor" href="#how-git-version-release-manager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How Git Version Release Manager</h1>
+
+<p>We have a large number of Extensions stored in one folder, and committed to Git, but we need to track the version information of each Extension that is release, as these folders contain just a couple of files, it seems overkill to create a repo for each one, and we`re not big enough to warrant a full CD solution so this is our solution.</p>
+
+<p>All of the Extensions are stored in one Git repository in the following hierarchy</p>
+
+<p>Inside each Extension folder there is a version.txt file that is in the following format</p>
+
+<ul>
+<li>Version: the current version that has been packaged for deployment</li>
+<li>SHA1: the hash of the commit that this version was built using</li>
+<li>BuildDate: when this version was built</li>
+<li>ProjectName: the name of this project</li>
+</ul>
+
+<h1>
+<a id="release-procedure" class="anchor" href="#release-procedure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Release procedure</h1>
+
+<p>Once you have completed your change for an extension and you are ready to deploy your changes</p>
+
+<ul>
+<li>Make sure all the changes are pushed back in to Git and that your local repo is fully up-to-date</li>
+<li>Run the ‘Build release.bat’ file this will call the open source tool “Git Version Release Manager” which will automatically run through the following
+
+<ul>
+<li>Check there are no Untracked, UnStaged or Uncommited changes</li>
+<li>Check that your repo is the latest version</li>
+<li>Update the version.txt file with the following info
+
+<ul>
+<li>Version: increment the version number by 1</li>
+<li>SHA1: the hash of the last commit</li>
+<li>BuildDate: Current date and time</li>
+<li>ProjectName: the name of this project</li>
+</ul>
+</li>
+<li>Create a zip file with all the files for this release in it, with the following naming convention “{PROJECTNAME}-{VERSION}.zip in the root of the extension folder</li>
+<li>Copy the version.txt file to any other paths specified in the ‘Build release.bat’ within the release zip file. This is to make sure the version.txt sits alongside the released extension, for tracking at later date.</li>
+<li>Stage the updated Version.txt file in the root of this extension</li>
+<li>Commit the new Version.txt file to GIT and Tag it in the following format GVRM-“{PROJECTNAME}-v{VERSION}</li>
+<li>Push the changes to GIT</li>
+</ul>
+</li>
+</ul>
+
+<p>You will now have a zip file which includes the version info and hash of the commit used to build it, which can be used if there is a problem later and you need to find out which version of the code was used.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
