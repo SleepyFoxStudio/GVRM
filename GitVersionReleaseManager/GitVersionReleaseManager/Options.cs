@@ -53,7 +53,7 @@ namespace GitVersionReleaseManager
                 yield return new Example("Create a new release from scratch", new Options { ProjectPath = "c:/foo/bar project", Create = true });
                 yield return new Example("Update version of release", new Options { ProjectPath = "c:/foo/bar project" });
                 yield return new Example("Update version of release, but exclude sample.txt", new Options { ProjectPath = "c:/foo/bar project", ExcludeFiles = new[] {"sample.txt"}});
-                yield return new Example("Update version of release, and put version file in root and in /foo in zip file", new Options { ProjectPath = "c:/foo/bar project" });
+                yield return new Example("Update version of release, and put version file in root and in /foo in zip file", new Options { ProjectPath = "c:/foo/bar project" , VersionFilePaths = new[] {"foo"}});
             }
         }
     }
