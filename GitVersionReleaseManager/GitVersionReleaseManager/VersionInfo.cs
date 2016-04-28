@@ -11,7 +11,7 @@ namespace GitVersionReleaseManager
         private readonly string _selectedFolder;
         private const string VersionFileName = "version.txt";
 
-        internal string VersionFilePath => Path.Combine(_selectedFolder, VersionFileName);
+        internal string VersionFilePath => Path.GetFullPath(Path.Combine(_selectedFolder, VersionFileName));
 
         public VersionInfo(string selectedFolder)
         {

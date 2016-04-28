@@ -104,6 +104,7 @@ namespace GitVersionReleaseManager
             {
                 VersionInfo versionInfo = new VersionInfo(appOptions.ProjectPath);
                 // Stage the files
+                Console.WriteLine($"Stage {versionInfo.VersionFilePath}");
                 repo.Stage(versionInfo.VersionFilePath);
 
                 // Create the committer's signature and commit

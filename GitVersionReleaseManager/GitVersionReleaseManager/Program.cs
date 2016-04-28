@@ -97,7 +97,7 @@ namespace GitVersionReleaseManager
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Console.Error.WriteLine("Fatal error occurred, see Mark:");
+            Console.Error.WriteLine("Fatal error occurred, see exception below:");
             Console.WriteLine("Press any key to exit.");
             Console.Error.WriteLine(e.ExceptionObject);
             Console.ReadKey();

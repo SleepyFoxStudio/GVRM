@@ -61,7 +61,7 @@ namespace GitVersionReleaseManager
                 string zipFileName = $"{folderName}-{version}.zip";
 
                 AddAllInDirectory(baseDirectory, zip, options.ExcludeFiles);
-                var versionInfo = new VersionInfo(releaseFolder);
+                var versionInfo = new VersionInfo(options.ProjectPath);
                 foreach (var additionalVersionFolderPath in options.VersionFilePaths)
                 {
                     zip.AddFile(versionInfo.VersionFilePath, additionalVersionFolderPath);
