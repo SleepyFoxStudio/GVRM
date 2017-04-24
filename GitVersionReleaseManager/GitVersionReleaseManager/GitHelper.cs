@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
+using System.Configuration;
 
 namespace GitVersionReleaseManager
 {
@@ -17,7 +18,14 @@ namespace GitVersionReleaseManager
         internal GitHelper(string pass, string repoPath)
         {
             _repoPath = repoPath;
-            _masterBranchName = @"master";
+            try
+            {
+                _masterBranchName = ConfigurationManager.AppSettings["masterBranchName"];
+            }
+            catch
+            {
+                _masterBranchName = "master";
+            }
             _repoPass = pass;
             using (var repo = new Repository(_repoPath))
             {
@@ -33,7 +41,7 @@ namespace GitVersionReleaseManager
             {
                 if (repo.Head.FriendlyName != _masterBranchName)
                 {
-                    Console.WriteLine("BARF!  you are not on master branch");
+                    Console.WriteLine($"BARF!  you are not on {_masterBranchName} branch");
                     repoSynched = false;
                 }
 
