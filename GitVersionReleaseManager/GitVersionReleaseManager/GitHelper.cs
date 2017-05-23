@@ -49,7 +49,7 @@ namespace GitVersionReleaseManager
 
                 if ((repo.Head.TrackingDetails.AheadBy ?? 0) > 0)
                 {
-                    Console.WriteLine($"{repo.Head.FriendlyName}: Can`t continue because you are ahead by: {repo.Head.TrackingDetails.BehindBy}");
+                    Console.WriteLine($"{repo.Head.FriendlyName}: Can`t continue because you are ahead by: {repo.Head.TrackingDetails.AheadBy}");
                     repoSynched = false;
                 }
                 if ((repo.Head.TrackingDetails.BehindBy ?? 0) > 0)
@@ -140,7 +140,7 @@ namespace GitVersionReleaseManager
                         });
                 Tag t = repo.ApplyTag(GetCommitName(versionData));
 
-                repo.Network.Push(remote, new[] { @"refs/heads/master", t.ToString() }, options);
+                repo.Network.Push(remote, new[] { $@"refs/heads/{_masterBranchName}", t.ToString() }, options);
             }
         }
 
